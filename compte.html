@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte | NomDuSite - Votre destination shopping en ligne</title>
+    <meta name="description" content="Gérez votre compte NomDuSite, suivez vos commandes, personnalisez vos préférences et profitez d'offres exclusives.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="account.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/categories">Catégories</a></li>
+                <li><a href="/promotions">Promotions</a></li>
+                <li><a href="/service-client">Service Client</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="/panier" class="cart-icon" aria-label="Panier">🛒</a>
+            <a href="/favoris" class="wishlist-icon" aria-label="Liste de souhaits">❤️</a>
+        </div>
+    </header>
+
+    <main>
+        <h1>Tableau de bord - Mon Compte</h1>
+        
+        <aside>
+            <nav aria-label="Navigation du compte">
+                <ul>
+                    <li><a href="#apercu">Aperçu</a></li>
+                    <li><a href="#commandes">Commandes</a></li>
+                    <li><a href="#retours">Retours et Remboursements</a></li>
+                    <li><a href="#adresses">Adresses</a></li>
+                    <li><a href="#paiements">Méthodes de paiement</a></li>
+                    <li><a href="#preferences">Préférences</a></li>
+                    <li><a href="#securite">Sécurité</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section id="apercu">
+            <h2>Aperçu du compte</h2>
+            <div class="user-info">
+                <img src="avatar.jpg" alt="Photo de profil" class="avatar">
+                <p>Bienvenue, <span id="userName">Prénom Nom</span></p>
+                <p>Membre depuis : <span id="memberSince">Date d'inscription</span></p>
+                <p>Statut : <span id="memberStatus">Client Premium</span></p>
+            </div>
+            <div class="quick-actions">
+                <a href="#commandes" class="btn">Dernière commande</a>
+                <a href="#retours" class="btn">Effectuer un retour</a>
+                <a href="#paiements" class="btn">Gérer les paiements</a>
+            </div>
+        </section>
+
+        <section id="commandes">
+            <h2>Mes commandes</h2>
+            <table>
+                <caption>Historique des commandes</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">N° de commande</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Statut</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Insérez ici les lignes de commandes dynamiquement -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="retours">
+            <h2>Retours et Remboursements</h2>
+            <form id="returnForm">
+                <label for="orderNumber">Numéro de commande :</label>
+                <input type="text" id="orderNumber" name="orderNumber" required>
+                
+                <label for="returnReason">Raison du retour :</label>
+                <select id="returnReason" name="returnReason" required>
+                    <option value="">Sélectionnez une raison</option>
+                    <option value="wrong-size">Taille incorrecte</option>
+                    <option value="defective">Produit défectueux</option>
+                    <option value="not-as-described">Ne correspond pas à la description</option>
+                </select>
+                
+                <button type="submit">Demander un retour</button>
+            </form>
+        </section>
+
+        <section id="adresses">
+            <h2>Mes adresses</h2>
+            <div id="addressList">
+                <!-- Liste des adresses générée dynamiquement -->
+            </div>
+            <button id="addAddressBtn">Ajouter une nouvelle adresse</button>
+        </section>
+
+        <section id="paiements">
+            <h2>Méthodes de paiement</h2>
+            <div id="paymentMethods">
+                <!-- Liste des méthodes de paiement générée dynamiquement -->
+            </div>
+            <button id="addPaymentBtn">Ajouter un moyen de paiement</button>
+        </section>
+
+        <section id="preferences">
+            <h2>Préférences</h2>
+            <form id="preferencesForm">
+                <fieldset>
+                    <legend>Notifications</legend>
+                    <label>
+                        <input type="checkbox" name="emailNotif" checked>
+                        Recevoir des notifications par email
+                    </label>
+                    <label>
+                        <input type="checkbox" name="smsNotif">
+                        Recevoir des notifications par SMS
+                    </label>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Personnalisation</legend>
+                    <label>
+                        <input type="checkbox" name="personalization" checked>
+                        Personnaliser mon expérience de shopping
+                    </label>
+                </fieldset>
+                
+                <button type="submit">Enregistrer les préférences</button>
+            </form>
+        </section>
+
+        <section id="securite">
+            <h2>Sécurité du compte</h2>
+            <form id="securityForm">
+                <label for="currentPassword">Mot de passe actuel :</label>
+                <input type="password" id="currentPassword" name="currentPassword" required>
+                
+                <label for="newPassword">Nouveau mot de passe :</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+                
+                <label for="confirmPassword">Confirmer le nouveau mot de passe :</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                
+                <button type="submit">Changer le mot de passe</button>
+            </form>
+            
+            <div class="two-factor-auth">
+                <h3>Authentification à deux facteurs</h3>
+                <p>Statut : <span id="2FAStatus">Désactivé</span></p>
+                <button id="toggle2FA">Activer l'authentification à deux facteurs</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <h3>Aide et information</h3>
+            <ul>
+                <li><a href="/aide">Centre d'aide</a></li>
+                <li><a href="/livraison">Informations de livraison</a></li>
+                <li><a href="/retours">Politique de retour</a></li>
+                <li><a href="/contact">Nous contacter</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h3>À propos de NomDuSite</h3>
+            <ul>
+                <li><a href="/a-propos">Qui sommes-nous</a></li>
+                <li><a href="/carriere">Carrières</a></li>
+                <li><a href="/presse">Espace presse</a></li>
+                <li><a href="/partenaires">Devenir partenaire</a></li>
+            </ul>
+        </div>
+        <div class="social-media">
+            <h3>Suivez-nous</h3>
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Twitter">Twitter</a>
+            <a href="#" aria-label="YouTube">YouTube</a>
+        </div>
+        <div class="legal">
+            <p>&copy; 2023 NomDuSite. Tous droits réservés.</p>
+            <a href="/confidentialite">Politique de confidentialité</a>
+            <a href="/cgv">Conditions générales de vente</a>
+        </div>
+    </footer>
+</body>
+</html>
